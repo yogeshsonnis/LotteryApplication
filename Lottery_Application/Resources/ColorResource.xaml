@@ -1,0 +1,172 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Lottery_Application.Resources">
+
+    <SolidColorBrush x:Key="WhiteColor"
+                     Color="White"></SolidColorBrush>
+
+    <SolidColorBrush x:Key="BlackColor"
+                     Color="Black"></SolidColorBrush>
+
+    <SolidColorBrush x:Key="TransparentColor"
+                     Color="Transparent"></SolidColorBrush>
+
+    <SolidColorBrush x:Key="ViewButtonBlueColor"
+                     Color="#FF135995"></SolidColorBrush>
+    
+    <SolidColorBrush x:Key="ViewButtonOrangeColor"
+                     Color="#FFFF8500"></SolidColorBrush>
+
+    <SolidColorBrush x:Key="ViewButtonGrayColor"
+                     Color="#FF919191"></SolidColorBrush>
+
+    <SolidColorBrush x:Key="ViewButtonRedColor"
+                     Color="#FFFE0000"></SolidColorBrush> 
+
+    <SolidColorBrush x:Key="LabelTextColor"
+                     Color="#FFE7954B"></SolidColorBrush>
+
+    <SolidColorBrush x:Key="LabelBorderColor"
+                     Color="#FF01E4FF"></SolidColorBrush>
+
+    <SolidColorBrush x:Key="ButtonBackgroundLightSkyBlue"
+                     Color="#FF00C0EF"></SolidColorBrush>
+    
+    <SolidColorBrush x:Key="ButtonBackgroundDarkSkyBlue"
+                     Color="#FF009AC0"></SolidColorBrush>
+
+    <SolidColorBrush x:Key="ButtonBackgroundLightGreen"
+                     Color="#FF00A65A"></SolidColorBrush>
+
+    <SolidColorBrush x:Key="ButtonBackgroundDarkGreen"
+                     Color="#FF008548"></SolidColorBrush>
+
+    <SolidColorBrush x:Key="ButtonBackgroundLightRed"
+                     Color="#FFDD4B3A"></SolidColorBrush>
+
+    <SolidColorBrush x:Key="ButtonBackgroundDarkRed"
+                     Color="#FFB13B2D"></SolidColorBrush>
+
+    <SolidColorBrush x:Key="ButtonBackgroundLightOrange"
+                     Color="#FFF39C11"></SolidColorBrush>
+
+    <SolidColorBrush x:Key="ButtonBackgroundDarkOrange"
+                     Color="#FFC37D0E"></SolidColorBrush>
+
+    <SolidColorBrush x:Key="ButtonBackgroundLightBlack"
+                     Color="#FF6A7275"></SolidColorBrush>
+
+    <SolidColorBrush x:Key="ButtonBackgroundDarkBlack"
+                     Color="#FF222D31"></SolidColorBrush>
+
+    <SolidColorBrush x:Key="ButtonBackgroundLightLavender"
+                     Color="#FFCD6EF0"></SolidColorBrush>
+
+    <SolidColorBrush x:Key="ButtonBackgroundDarkLavender"
+                     Color="#FFBA01FF"></SolidColorBrush>
+
+    <SolidColorBrush x:Key="ButtonBackgroundLightBlue"
+                     Color="#FF4948EB"></SolidColorBrush>
+
+    <SolidColorBrush x:Key="ButtonBackgroundDarkBlue"
+                     Color="#FF2120FF"></SolidColorBrush>
+
+    <SolidColorBrush x:Key="CloseTextButtonBackgroundColor"
+                     Color="#FFED2025"></SolidColorBrush>
+
+    <SolidColorBrush x:Key="EmptyBoxBackgroundColor"
+                     Color="#FF1E2D4C"></SolidColorBrush>
+
+    <SolidColorBrush x:Key="AcitveTicketBoxBackgroundColor"
+                     Color="#FF99CC33"></SolidColorBrush>
+
+    <SolidColorBrush x:Key="EmptyTicketBoxBackgroundColor"
+                     Color="#FFED2025"></SolidColorBrush>
+
+    <SolidColorBrush x:Key="DataGridHeaderBackground"
+                     Color="#FFCCCCCC"></SolidColorBrush>
+
+    <SolidColorBrush x:Key="IconNormalColor"
+                     Color="#FF00AADD"></SolidColorBrush>
+
+    <SolidColorBrush x:Key="IconPressedColor"
+                     Color="White"></SolidColorBrush>
+
+    <SolidColorBrush x:Key="IconPressedBackgroundColor"
+                     Color="#FF0A66B0"></SolidColorBrush>
+
+    <SolidColorBrush x:Key="InnerGridWindowBackgroundColor"
+                     Color="#FFCDCDCD"></SolidColorBrush>
+
+    <SolidColorBrush x:Key="TextButtonBackgroundColor"
+                     Color="#FFEBEBEB"></SolidColorBrush>
+
+    <SolidColorBrush x:Key="TextButtonPressedBackgroundColor"
+                     Color="#FF3E3E3E"></SolidColorBrush>
+
+    <SolidColorBrush x:Key="GrayButtonNormalBackgroundColor"
+                     Color="#FF626167"></SolidColorBrush>
+
+    <SolidColorBrush x:Key="GrayButtonMouseoverBackgroundColor"
+                     Color="#FF67666E"></SolidColorBrush>
+
+    <SolidColorBrush x:Key="GrayButtonPressedBackgroundColor"
+                     Color="#FF4F4E53"></SolidColorBrush>
+
+    <SolidColorBrush x:Key="YellowButtonNormalBackgroundColor"
+                     Color="#FFEBC844"></SolidColorBrush>
+
+    <SolidColorBrush x:Key="YellowButtonMouseoverBackgroundColor"
+                     Color="#FFEED369"></SolidColorBrush>
+
+    <SolidColorBrush x:Key="YellowButtonPressedBackgroundColor"
+                     Color="#FFBBA036"></SolidColorBrush>
+
+    <SolidColorBrush x:Key="GreenButtonNormalBackgroundColor"
+                     Color="#FFC3C3C3"></SolidColorBrush>
+
+    <SolidColorBrush x:Key="GreenButtonMouseoverBackgroundColor"
+                     Color="#FF2F9165"></SolidColorBrush>
+
+    <SolidColorBrush x:Key="GreenButtonPressedBackgroundColor"
+                     Color="#FF237E55"></SolidColorBrush>
+
+    <SolidColorBrush x:Key="BlueButtonNormalBackgroundColor"
+                     Color="#FFED1B24"></SolidColorBrush>
+
+    <SolidColorBrush x:Key="BlueButtonMouseoverBackgroundColor"
+                     Color="#FF5386B8"></SolidColorBrush>
+
+    <SolidColorBrush x:Key="BlueButtonPressedBackgroundColor"
+                     Color="#FF386693"></SolidColorBrush>
+
+    <SolidColorBrush x:Key="PinkButtonNormalBackgroundColor"
+                     Color="#FFFF7F26"></SolidColorBrush>
+
+    <SolidColorBrush x:Key="PinkButtonMouseoverBackgroundColor"
+                     Color="#FFC18CB0"></SolidColorBrush>
+
+    <SolidColorBrush x:Key="PinkButtonPressedBackgroundColor"
+                     Color="#FF9E638B"></SolidColorBrush>
+
+    <SolidColorBrush x:Key="PistaButtonNormalBackgroundColor"
+                     Color="#FF7092BE"></SolidColorBrush>
+
+    <SolidColorBrush x:Key="PistaButtonMouseoverBackgroundColor"
+                     Color="#FF62AFBF"></SolidColorBrush>
+
+    <SolidColorBrush x:Key="PistaButtonPressedBackgroundColor"
+                     Color="#FF498B99"></SolidColorBrush>
+
+    <SolidColorBrush x:Key="RedButtonNormalBackgroundColor"
+                     Color="#FFDE6863"></SolidColorBrush>
+
+    <SolidColorBrush x:Key="RedButtonMouseoverBackgroundColor"
+                     Color="#FFEC7C77"></SolidColorBrush>
+
+    <SolidColorBrush x:Key="RedButtonPressedBackgroundColor"
+                     Color="#FFCB5854"></SolidColorBrush>
+
+   
+</ResourceDictionary>

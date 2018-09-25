@@ -1,0 +1,1894 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Lottery_Application.Resources"
+    xmlns:AttachedProperties="using:Lottery_Application.AttachedProperties"
+    xmlns:converter="using:Lottery_Application.Converters">
+
+    <Style x:Key="ImageButtonStyle" TargetType="Button">
+        <Setter Property="HorizontalAlignment" Value="Stretch"/>
+        <Setter Property="VerticalAlignment" Value="Stretch"/>
+        <Setter Property="Height" Value="90"/>
+        <Setter Property="Width" Value="110"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Grid x:Name="gd">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="70"/>
+                            <RowDefinition Height="20"/>
+                        </Grid.RowDefinitions>
+                        <Border x:Name="border"
+                            BorderThickness="1"
+                            Margin="2.5" Height="60" Width="60">
+                            <Image x:Name="image" Source="{TemplateBinding AttachedProperties:AdditionalAttachedProperties.GeometryData}" Stretch="Fill"/>
+                        </Border>
+                        <TextBlock x:Name="tbcontent" Text="{TemplateBinding Content}" FontSize="16" Grid.Row="1" FontWeight="SemiBold" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CommonStates">
+                                <VisualState x:Name="Normal"/>
+                                <VisualState x:Name="PointerOver"/>
+                                <VisualState x:Name="Pressed">
+                                    <Storyboard>
+                                        <ObjectAnimationUsingKeyFrames  Storyboard.TargetProperty="Height" Storyboard.TargetName="border">
+                                            <DiscreteObjectKeyFrame  KeyTime="0" Value="63"/>
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <ObjectAnimationUsingKeyFrames  Storyboard.TargetProperty="Width" Storyboard.TargetName="border">
+                                            <DiscreteObjectKeyFrame  KeyTime="0" Value="63"/>
+                                        </ObjectAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="Disabled"/>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+
+    </Style>
+
+    <Style x:Key="HamburgerButtonStyle" TargetType="Button">
+        <Setter Property="HorizontalAlignment" Value="Stretch"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="Height" Value="40"/>
+        <Setter Property="Width" Value="40"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Grid x:Name="gd" Margin="5">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+
+                        <Border x:Name="border" Background="{StaticResource TransparentColor}"/>
+                        <Border x:Name="border1" Background="{StaticResource WhiteColor}" Height="2" Width="20" Grid.Row="1"/>
+                        <Border x:Name="border2" Background="{StaticResource TransparentColor}"  Grid.Row="2"/>
+                        <Border x:Name="border3" Background="{StaticResource WhiteColor}" Height="2" Width="20" Grid.Row="3"/>
+                        <Border x:Name="border4" Background="{StaticResource TransparentColor}" Grid.Row="4"/>
+                        <Border x:Name="border5" Background="{StaticResource WhiteColor}" Height="2" Width="20" Grid.Row="5"/>
+                        <Border x:Name="border6" Background="{StaticResource TransparentColor}" Grid.Row="6"/>
+
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CommonStates">
+                                <VisualState x:Name="Normal"/>
+                                <VisualState x:Name="PointerOver"/>
+                                <VisualState x:Name="Pressed">
+                                    <Storyboard>
+                                        <ObjectAnimationUsingKeyFrames  Storyboard.TargetProperty="Height" Storyboard.TargetName="gd">
+                                            <DiscreteObjectKeyFrame  KeyTime="0" Value="25"/>
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <ObjectAnimationUsingKeyFrames  Storyboard.TargetProperty="Width" Storyboard.TargetName="gd">
+                                            <DiscreteObjectKeyFrame  KeyTime="0" Value="25"/>
+                                        </ObjectAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="Disabled"/>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+
+    </Style>
+
+    <Style x:Key="GrayColorButtonStyle" TargetType="Button">
+        <Setter Property="HorizontalAlignment" Value="Stretch"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="Height" Value="45"/>
+        <Setter Property="Width" Value="150"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Grid x:Name="gd" Background="Transparent">
+
+                        <Border x:Name="border"
+                                CornerRadius="3" Height="45" Width="150" 
+                                Background="{StaticResource GrayButtonNormalBackgroundColor}">
+                            <TextBlock x:Name="tbContent" Text="{TemplateBinding Content}" Foreground="{StaticResource WhiteColor}" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="SemiBold"/>
+                            <!--<Image x:Name="image" Height="35" Width="35" Source="{TemplateBinding AttachedProperties:AdditionalAttachedProperties.GeometryData}" Stretch="Fill"/>-->
+                        </Border>
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CommonStates">
+                                <VisualState x:Name="Normal"/>
+                                <VisualState x:Name="PointerOver">
+                                    <Storyboard>
+                                        <ObjectAnimationUsingKeyFrames  Storyboard.TargetProperty="Background" Storyboard.TargetName="border">
+                                            <DiscreteObjectKeyFrame  KeyTime="0" Value="{StaticResource GrayButtonMouseoverBackgroundColor}"/>
+                                        </ObjectAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="Pressed">
+                                    <Storyboard>
+                                        <ObjectAnimationUsingKeyFrames  Storyboard.TargetProperty="Background" Storyboard.TargetName="border">
+                                            <DiscreteObjectKeyFrame  KeyTime="0" Value="{StaticResource GrayButtonPressedBackgroundColor}"/>
+                                        </ObjectAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="Disabled"/>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+
+    </Style>
+
+    <Style x:Key="YellowColorButtonStyle" TargetType="Button" BasedOn="{StaticResource GrayColorButtonStyle}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Grid x:Name="gd" Background="Transparent">
+
+                        <Border x:Name="border"
+                                CornerRadius="3" Height="45" Width="150" 
+                                Background="{StaticResource YellowButtonNormalBackgroundColor}">
+                            <TextBlock x:Name="tbContent" Text="{TemplateBinding Content}" Foreground="{StaticResource WhiteColor}" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="SemiBold"/>
+                            <!--<Image x:Name="image" Height="35" Width="35" Source="{TemplateBinding AttachedProperties:AdditionalAttachedProperties.GeometryData}" Stretch="Fill"/>-->
+                        </Border>
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CommonStates">
+                                <VisualState x:Name="Normal"/>
+                                <VisualState x:Name="PointerOver">
+                                    <Storyboard>
+                                        <ObjectAnimationUsingKeyFrames  Storyboard.TargetProperty="Background" Storyboard.TargetName="border">
+                                            <DiscreteObjectKeyFrame  KeyTime="0" Value="{StaticResource YellowButtonMouseoverBackgroundColor}"/>
+                                        </ObjectAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="Pressed">
+                                    <Storyboard>
+                                        <ObjectAnimationUsingKeyFrames  Storyboard.TargetProperty="Background" Storyboard.TargetName="border">
+                                            <DiscreteObjectKeyFrame  KeyTime="0" Value="{StaticResource YellowButtonPressedBackgroundColor}"/>
+                                        </ObjectAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="Disabled"/>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="GreenColorButtonStyle" TargetType="Button" BasedOn="{StaticResource GrayColorButtonStyle}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Grid x:Name="gd" Background="Transparent">
+
+                        <Border x:Name="border"
+                                CornerRadius="3" Height="45" Width="150" 
+                                Background="{StaticResource GreenButtonNormalBackgroundColor}">
+                            <TextBlock x:Name="tbContent" Text="{TemplateBinding Content}" Foreground="{StaticResource BlackColor}" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="SemiBold"/>
+                            <!--<Image x:Name="image" Height="35" Width="35" Source="{TemplateBinding AttachedProperties:AdditionalAttachedProperties.GeometryData}" Stretch="Fill"/>-->
+                        </Border>
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CommonStates">
+                                <VisualState x:Name="Normal"/>
+                                <VisualState x:Name="PointerOver">
+                                    <Storyboard>
+                                        <ObjectAnimationUsingKeyFrames  Storyboard.TargetProperty="Background" Storyboard.TargetName="border">
+                                            <DiscreteObjectKeyFrame  KeyTime="0" Value="{StaticResource GrayButtonMouseoverBackgroundColor}"/>
+                                        </ObjectAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="Pressed">
+                                    <Storyboard>
+                                        <ObjectAnimationUsingKeyFrames  Storyboard.TargetProperty="Background" Storyboard.TargetName="border">
+                                            <DiscreteObjectKeyFrame  KeyTime="0" Value="{StaticResource GrayButtonPressedBackgroundColor}"/>
+                                        </ObjectAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="Disabled"/>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="BlueColorButtonStyle" TargetType="Button" BasedOn="{StaticResource GrayColorButtonStyle}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Grid x:Name="gd" Background="Transparent">
+
+                        <Border x:Name="border"
+                                CornerRadius="3" Height="45" Width="150" 
+                                Background="{StaticResource BlueButtonNormalBackgroundColor}">
+                            <TextBlock x:Name="tbContent" Text="{TemplateBinding Content}" Foreground="{StaticResource WhiteColor}" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="SemiBold"/>
+                            <!--<Image x:Name="image" Height="35" Width="35" Source="{TemplateBinding AttachedProperties:AdditionalAttachedProperties.GeometryData}" Stretch="Fill"/>-->
+                        </Border>
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CommonStates">
+                                <VisualState x:Name="Normal"/>
+                                <VisualState x:Name="PointerOver">
+                                    <Storyboard>
+                                        <ObjectAnimationUsingKeyFrames  Storyboard.TargetProperty="Background" Storyboard.TargetName="border">
+                                            <DiscreteObjectKeyFrame  KeyTime="0" Value="{StaticResource RedButtonMouseoverBackgroundColor}"/>
+                                        </ObjectAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="Pressed">
+                                    <Storyboard>
+                                        <ObjectAnimationUsingKeyFrames  Storyboard.TargetProperty="Background" Storyboard.TargetName="border">
+                                            <DiscreteObjectKeyFrame  KeyTime="0" Value="{StaticResource RedButtonPressedBackgroundColor}"/>
+                                        </ObjectAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="Disabled"/>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="PinkColorButtonStyle" TargetType="Button" BasedOn="{StaticResource GrayColorButtonStyle}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Grid x:Name="gd" Background="Transparent">
+
+                        <Border x:Name="border"
+                                CornerRadius="3" Height="45" Width="150" 
+                                Background="{StaticResource PinkButtonNormalBackgroundColor}">
+                            <TextBlock x:Name="tbContent" Text="{TemplateBinding Content}" Foreground="{StaticResource WhiteColor}" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="SemiBold"/>
+                            <!--<Image x:Name="image" Height="35" Width="35" Source="{TemplateBinding AttachedProperties:AdditionalAttachedProperties.GeometryData}" Stretch="Fill"/>-->
+                        </Border>
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CommonStates">
+                                <VisualState x:Name="Normal"/>
+                                <VisualState x:Name="PointerOver">
+                                    <Storyboard>
+                                        <ObjectAnimationUsingKeyFrames  Storyboard.TargetProperty="Background" Storyboard.TargetName="border">
+                                            <DiscreteObjectKeyFrame  KeyTime="0" Value="{StaticResource PinkButtonMouseoverBackgroundColor}"/>
+                                        </ObjectAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="Pressed">
+                                    <Storyboard>
+                                        <ObjectAnimationUsingKeyFrames  Storyboard.TargetProperty="Background" Storyboard.TargetName="border">
+                                            <DiscreteObjectKeyFrame  KeyTime="0" Value="{StaticResource PinkButtonPressedBackgroundColor}"/>
+                                        </ObjectAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="Disabled"/>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="PistaColorButtonStyle" TargetType="Button" BasedOn="{StaticResource GrayColorButtonStyle}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Grid x:Name="gd" Background="Transparent">
+
+                        <Border x:Name="border"
+                                CornerRadius="3" Height="45" Width="150" 
+                                Background="{StaticResource PistaButtonNormalBackgroundColor}">
+                            <TextBlock x:Name="tbContent" Text="{TemplateBinding Content}" Foreground="{StaticResource WhiteColor}" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="SemiBold"/>
+                            <!--<Image x:Name="image" Height="35" Width="35" Source="{TemplateBinding AttachedProperties:AdditionalAttachedProperties.GeometryData}" Stretch="Fill"/>-->
+                        </Border>
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CommonStates">
+                                <VisualState x:Name="Normal"/>
+                                <VisualState x:Name="PointerOver">
+                                    <Storyboard>
+                                        <ObjectAnimationUsingKeyFrames  Storyboard.TargetProperty="Background" Storyboard.TargetName="border">
+                                            <DiscreteObjectKeyFrame  KeyTime="0" Value="{StaticResource PistaButtonMouseoverBackgroundColor}"/>
+                                        </ObjectAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="Pressed">
+                                    <Storyboard>
+                                        <ObjectAnimationUsingKeyFrames  Storyboard.TargetProperty="Background" Storyboard.TargetName="border">
+                                            <DiscreteObjectKeyFrame  KeyTime="0" Value="{StaticResource PistaButtonPressedBackgroundColor}"/>
+                                        </ObjectAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="Disabled"/>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="RedColorButtonStyle" TargetType="Button" BasedOn="{StaticResource GrayColorButtonStyle}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Grid x:Name="gd" Background="Transparent">
+
+                        <Border x:Name="border"
+                                CornerRadius="3" Height="45" Width="150" 
+                                Background="{StaticResource RedButtonNormalBackgroundColor}">
+                            <TextBlock x:Name="tbContent" Text="{TemplateBinding Content}" Foreground="{StaticResource WhiteColor}" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="SemiBold"/>
+                            <!--<Image x:Name="image" Height="35" Width="35" Source="{TemplateBinding AttachedProperties:AdditionalAttachedProperties.GeometryData}" Stretch="Fill"/>-->
+                        </Border>
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CommonStates">
+                                <VisualState x:Name="Normal"/>
+                                <VisualState x:Name="PointerOver">
+                                    <Storyboard>
+                                        <ObjectAnimationUsingKeyFrames  Storyboard.TargetProperty="Background" Storyboard.TargetName="border">
+                                            <DiscreteObjectKeyFrame  KeyTime="0" Value="{StaticResource RedButtonMouseoverBackgroundColor}"/>
+                                        </ObjectAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="Pressed">
+                                    <Storyboard>
+                                        <ObjectAnimationUsingKeyFrames  Storyboard.TargetProperty="Background" Storyboard.TargetName="border">
+                                            <DiscreteObjectKeyFrame  KeyTime="0" Value="{StaticResource RedButtonPressedBackgroundColor}"/>
+                                        </ObjectAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="Disabled"/>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="BoxButtonStyle" TargetType="Button">
+        <Setter Property="HorizontalAlignment" Value="Stretch"/>
+        <Setter Property="VerticalAlignment" Value="Stretch"/>
+        <Setter Property="Height" Value="30"/>
+        <Setter Property="Width" Value="30"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Grid x:Name="gd">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Border x:Name="border" Background="{StaticResource ViewButtonBlueColor}" Margin="1.5"/>
+                        <Border x:Name="border1" Background="{StaticResource ViewButtonOrangeColor}" Margin="1.5" Grid.Column="1"/>
+                        <Border x:Name="border2" Background="{StaticResource ViewButtonGrayColor}" Margin="1.5" Grid.Row="1"/>
+                        <Border x:Name="border3" Background="{StaticResource ViewButtonRedColor}" Margin="1.5" Grid.Column="1" Grid.Row="1"/>
+
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CommonStates">
+                                <VisualState x:Name="Normal"/>
+                                <VisualState x:Name="PointerOver"/>
+                                <VisualState x:Name="Pressed">
+                                    <Storyboard>
+                                        <ObjectAnimationUsingKeyFrames  Storyboard.TargetProperty="Height" Storyboard.TargetName="gd">
+                                            <DiscreteObjectKeyFrame  KeyTime="0" Value="28"/>
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <ObjectAnimationUsingKeyFrames  Storyboard.TargetProperty="Width" Storyboard.TargetName="gd">
+                                            <DiscreteObjectKeyFrame  KeyTime="0" Value="28"/>
+                                        </ObjectAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="Disabled"/>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+
+    </Style>
+
+    <Style x:Key="ListButtonStyle" TargetType="Button">
+        <Setter Property="HorizontalAlignment" Value="Stretch"/>
+        <Setter Property="VerticalAlignment" Value="Stretch"/>
+        <Setter Property="Height" Value="30"/>
+        <Setter Property="Width" Value="30"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Grid x:Name="gd">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+
+                        <Border x:Name="border" Background="{StaticResource ViewButtonBlueColor}"/>
+                        <Border x:Name="border1" Background="{StaticResource WhiteColor}" Grid.Row="1"/>
+                        <Border x:Name="border2" Background="{StaticResource ViewButtonGrayColor}" Grid.Row="2"/>
+                        <Border x:Name="border3" Background="{StaticResource WhiteColor}" Grid.Row="3"/>
+                        <Border x:Name="border4" Background="{StaticResource ViewButtonRedColor}" Grid.Row="4"/>
+                        <Border x:Name="border5" Background="{StaticResource WhiteColor}" Grid.Row="5"/>
+                        <Border x:Name="border6" Background="{StaticResource ViewButtonOrangeColor}" Grid.Row="6"/>
+
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CommonStates">
+                                <VisualState x:Name="Normal"/>
+                                <VisualState x:Name="PointerOver"/>
+                                <VisualState x:Name="Pressed">
+                                    <Storyboard>
+                                        <ObjectAnimationUsingKeyFrames  Storyboard.TargetProperty="Height" Storyboard.TargetName="gd">
+                                            <DiscreteObjectKeyFrame  KeyTime="0" Value="28"/>
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <ObjectAnimationUsingKeyFrames  Storyboard.TargetProperty="Width" Storyboard.TargetName="gd">
+                                            <DiscreteObjectKeyFrame  KeyTime="0" Value="28"/>
+                                        </ObjectAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="Disabled"/>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+
+    </Style>
+
+    <Style x:Key="CloseTextButtonStyle" TargetType="Button">
+        <Setter Property="HorizontalAlignment" Value="Stretch"/>
+        <Setter Property="VerticalAlignment" Value="Stretch"/>
+        <Setter Property="Height" Value="100"/>
+        <Setter Property="Width" Value="100"/>
+        <Setter Property="Margin" Value="3,0"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Grid x:Name="gd">
+                        <Border x:Name="border"
+                            BorderThickness="2" Height="95" Width="95">
+                            <Border x:Name="bd" Margin="7" Background="{StaticResource CloseTextButtonBackgroundColor}" CornerRadius="5">
+                                <TextBlock x:Name="tbcontent" Text="{TemplateBinding Content}" FontSize="50" Grid.Row="1" Foreground="{StaticResource WhiteColor}" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                        </Border>
+                        <!--<TextBlock x:Name="tbcontent" Text="{TemplateBinding Content}" FontSize="16" Grid.Row="1" FontWeight="SemiBold" VerticalAlignment="Center" HorizontalAlignment="Center"/>-->
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CommonStates">
+                                <VisualState x:Name="Normal"/>
+                                <VisualState x:Name="PointerOver">
+                                    <Storyboard>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="BorderBrush" Storyboard.TargetName="border">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="Gray"/>
+                                        </ObjectAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+
+                                <VisualState x:Name="Pressed">
+                                    <Storyboard>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="BorderBrush" Storyboard.TargetName="border">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource TextButtonPressedBackgroundColor}"/>
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Margin" Storyboard.TargetName="bd">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="9"/>
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <!--<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Width" Storyboard.TargetName="bd">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="80"/>
+                                        </ObjectAnimationUsingKeyFrames>-->
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="Disabled"/>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+
+    </Style>
+
+    <Style x:Key="ColorTicketTextButtonStyle" TargetType="Button">
+        <Setter Property="HorizontalAlignment" Value="Stretch"/>
+        <Setter Property="VerticalAlignment" Value="Stretch"/>
+        <Setter Property="Height" Value="80"/>
+        <Setter Property="Width" Value="80"/>
+        <Setter Property="Margin" Value="10"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Grid x:Name="gd">
+
+                        <Border x:Name="border"
+                            BorderThickness="2"
+                            Margin="1" Height="80" Width="80" Background="{TemplateBinding Background}" CornerRadius="5">
+                            <TextBlock x:Name="tbcontent" Text="{TemplateBinding Content}" FontSize="40" Foreground="{StaticResource WhiteColor}" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                            <!--<Image x:Name="image" Source="{TemplateBinding AttachedProperties:AdditionalAttachedProperties.GeometryData}" Stretch="Fill"/>-->
+                        </Border>
+                        <!--<TextBlock x:Name="tbcontent" Text="{TemplateBinding Content}" FontSize="16" Grid.Row="1" FontWeight="SemiBold" VerticalAlignment="Center" HorizontalAlignment="Center"/>-->
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CommonStates">
+                                <VisualState x:Name="Normal"/>
+                                <VisualState x:Name="PointerOver"/>
+                                <VisualState x:Name="Pressed">
+                                    <Storyboard>
+                                        <ObjectAnimationUsingKeyFrames  Storyboard.TargetProperty="Height" Storyboard.TargetName="border">
+                                            <DiscreteObjectKeyFrame  KeyTime="0" Value="77"/>
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <ObjectAnimationUsingKeyFrames  Storyboard.TargetProperty="Width" Storyboard.TargetName="border">
+                                            <DiscreteObjectKeyFrame  KeyTime="0" Value="77"/>
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <ObjectAnimationUsingKeyFrames  Storyboard.TargetProperty="BorderBrush" Storyboard.TargetName="border">
+                                            <DiscreteObjectKeyFrame  KeyTime="0" Value="#FF7900FF"/>
+                                        </ObjectAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="Disabled"/>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+
+    </Style>
+
+    <Style x:Key="IconToggleButtonStyle" TargetType="ToggleButton">
+        <Setter Property="Background" Value="{ThemeResource TransparentColor}"/>
+        <Setter Property="Foreground" Value="{ThemeResource IconNormalColor}"/>
+        <Setter Property="BorderBrush" Value="{ThemeResource TransparentColor}"/>
+        <Setter Property="BorderThickness" Value="{ThemeResource ToggleButtonBorderThemeThickness}"/>
+        <Setter Property="Padding" Value="8,4,8,4"/>
+        <Setter Property="HorizontalAlignment" Value="Left"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="FontFamily" Value="{ThemeResource ContentControlThemeFontFamily}"/>
+        <Setter Property="FontWeight" Value="Normal"/>
+        <Setter Property="FontSize" Value="{ThemeResource ControlContentThemeFontSize}"/>
+        <Setter Property="UseSystemFocusVisuals" Value="True"/>
+        <Setter Property="FocusVisualMargin" Value="-3"/>
+        <Setter Property="Height" Value="50"/>
+        <Setter Property="Width" Value="50"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ToggleButton">
+                    <Grid x:Name="RootGrid" Background="{StaticResource TransparentColor}">
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CommonStates">
+                                <VisualState x:Name="Normal">
+                                    <Storyboard>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Background" Storyboard.TargetName="RootGrid">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource TransparentColor}"/>
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="PathIcon">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource IconNormalColor}"/>
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <PointerUpThemeAnimation Storyboard.TargetName="RootGrid"/>
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="PointerOver">
+                                    <Storyboard>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Background" Storyboard.TargetName="RootGrid">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource TransparentColor}"/>
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="PathIcon">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource IconNormalColor}"/>
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="BorderBrush" Storyboard.TargetName="bd">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource IconPressedBackgroundColor}"/>
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <PointerUpThemeAnimation Storyboard.TargetName="RootGrid"/>
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="Pressed">
+                                    <Storyboard>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Background" Storyboard.TargetName="RootGrid">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource TransparentColor}"/>
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="PathIcon">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource IconPressedColor}"/>
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Background" Storyboard.TargetName="bd">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource IconPressedBackgroundColor}"/>
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <!--<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Foreground" Storyboard.TargetName="ContentPresenter">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ToggleButtonForegroundPressed}"/>
+                                            </ObjectAnimationUsingKeyFrames>-->
+                                        <PointerDownThemeAnimation Storyboard.TargetName="RootGrid"/>
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="Disabled">
+                                    <Storyboard>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Background" Storyboard.TargetName="RootGrid">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ToggleButtonBackgroundDisabled}"/>
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="PathIcon">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource TransparentColor}"/>
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <!--<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="BorderBrush" Storyboard.TargetName="ContentPresenter">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ToggleButtonBorderBrushDisabled}"/>
+                                            </ObjectAnimationUsingKeyFrames>-->
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="Checked">
+                                    <Storyboard>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Background" Storyboard.TargetName="RootGrid">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource TransparentColor}"/>
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <!--<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Data" Storyboard.TargetName="PathIcon">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="M17.94,0L29.150001,0 29.150001,32 17.94,32z M0,0L11.210002,0 11.210002,32 0,32z"/>
+                                            </ObjectAnimationUsingKeyFrames>-->
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="PathIcon">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource IconPressedColor}"/>
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Stroke" Storyboard.TargetName="PathIcon">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource TransparentColor}"/>
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Background" Storyboard.TargetName="bd">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource IconPressedBackgroundColor}"/>
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <!--<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="BorderBrush" Storyboard.TargetName="ContentPresenter">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ToggleButtonBorderBrushChecked}"/>
+                                            </ObjectAnimationUsingKeyFrames>-->
+                                        <PointerUpThemeAnimation Storyboard.TargetName="RootGrid"/>
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="CheckedPointerOver">
+                                    <Storyboard>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Background" Storyboard.TargetName="RootGrid">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource TransparentColor}"/>
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <!--<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Data" Storyboard.TargetName="PathIcon">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="M17.94,0L29.150001,0 29.150001,32 17.94,32z M0,0L11.210002,0 11.210002,32 0,32z"/>
+                                            </ObjectAnimationUsingKeyFrames>-->
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="PathIcon">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource IconPressedColor}"/>
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Stroke" Storyboard.TargetName="PathIcon">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource TransparentColor}"/>
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Background" Storyboard.TargetName="bd">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource IconPressedBackgroundColor}"/>
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <!--<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Foreground" Storyboard.TargetName="ContentPresenter">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ToggleButtonForegroundCheckedPointerOver}"/>
+                                            </ObjectAnimationUsingKeyFrames>-->
+                                        <PointerUpThemeAnimation Storyboard.TargetName="RootGrid"/>
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="CheckedPressed">
+                                    <Storyboard>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Background" Storyboard.TargetName="RootGrid">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource TransparentColor}"/>
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <!--<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Data" Storyboard.TargetName="PathIcon">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="M17.94,0L29.150001,0 29.150001,32 17.94,32z M0,0L11.210002,0 11.210002,32 0,32z"/>
+                                            </ObjectAnimationUsingKeyFrames>-->
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="PathIcon">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource IconPressedColor}"/>
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Stroke" Storyboard.TargetName="PathIcon">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource TransparentColor}"/>
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Background" Storyboard.TargetName="bd">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource IconPressedBackgroundColor}"/>
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <!--<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="BorderBrush" Storyboard.TargetName="ContentPresenter">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ToggleButtonBorderBrushCheckedPressed}"/>
+                                            </ObjectAnimationUsingKeyFrames>-->
+                                        <PointerDownThemeAnimation Storyboard.TargetName="RootGrid"/>
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="CheckedDisabled">
+                                    <Storyboard>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Background" Storyboard.TargetName="RootGrid">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ToggleButtonBackgroundCheckedDisabled}"/>
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <!--<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Data" Storyboard.TargetName="PathIcon">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="M17.94,0L29.150001,0 29.150001,32 17.94,32z M0,0L11.210002,0 11.210002,32 0,32z"/>
+                                            </ObjectAnimationUsingKeyFrames>-->
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="PathIcon">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource IconPressedColor}"/>
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Stroke" Storyboard.TargetName="PathIcon">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource TransparentColor}"/>
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Background" Storyboard.TargetName="bd">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource IconPressedBackgroundColor}"/>
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <!--<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="BorderBrush" Storyboard.TargetName="ContentPresenter">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ToggleButtonBorderBrushCheckedDisabled}"/>
+                                            </ObjectAnimationUsingKeyFrames>-->
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="Indeterminate">
+                                    <Storyboard>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Background" Storyboard.TargetName="RootGrid">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ToggleButtonBackgroundIndeterminate}"/>
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="PathIcon">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ToggleButtonForegroundIndeterminate}"/>
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <!--<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="BorderBrush" Storyboard.TargetName="ContentPresenter">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ToggleButtonBorderBrushIndeterminate}"/>
+                                            </ObjectAnimationUsingKeyFrames>-->
+                                        <PointerUpThemeAnimation Storyboard.TargetName="RootGrid"/>
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="IndeterminatePointerOver">
+                                    <Storyboard>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Background" Storyboard.TargetName="RootGrid">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ToggleButtonBackgroundIndeterminatePointerOver}"/>
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="PathIcon">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ToggleButtonBorderBrushIndeterminatePointerOver}"/>
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <!--<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Foreground" Storyboard.TargetName="ContentPresenter">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ToggleButtonForegroundIndeterminatePointerOver}"/>
+                                            </ObjectAnimationUsingKeyFrames>-->
+                                        <PointerUpThemeAnimation Storyboard.TargetName="RootGrid"/>
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="IndeterminatePressed">
+                                    <Storyboard>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Background" Storyboard.TargetName="RootGrid">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ToggleButtonBackgroundIndeterminatePressed}"/>
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="PathIcon">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ToggleButtonBorderBrushIndeterminatePressed}"/>
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <!--<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Foreground" Storyboard.TargetName="ContentPresenter">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ToggleButtonForegroundIndeterminatePressed}"/>
+                                            </ObjectAnimationUsingKeyFrames>-->
+                                        <PointerDownThemeAnimation Storyboard.TargetName="RootGrid"/>
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="IndeterminateDisabled">
+                                    <Storyboard>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Background" Storyboard.TargetName="RootGrid">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ToggleButtonBackgroundIndeterminateDisabled}"/>
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="PathIcon">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ToggleButtonForegroundIndeterminateDisabled}"/>
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <!--<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="BorderBrush" Storyboard.TargetName="ContentPresenter">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ToggleButtonBorderBrushIndeterminateDisabled}"/>
+                                            </ObjectAnimationUsingKeyFrames>-->
+                                    </Storyboard>
+                                </VisualState>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                        <Border x:Name="bd" Margin="2" BorderThickness="1">
+                            <Path x:Name="PathIcon"
+                          Data="{TemplateBinding Content}"
+                          Stretch="Uniform"
+                          Fill="{StaticResource WhiteColor}"
+                          Stroke="{StaticResource TransparentColor}"
+                          StrokeThickness="1"
+                          Height="20" 
+                          Width="20"
+                          Margin="4"
+                          RenderTransformOrigin="0.5,0.5">
+                                <Path.RenderTransform>
+                                    <TransformGroup>
+                                        <TransformGroup.Children>
+                                            <RotateTransform Angle="0" />
+                                            <ScaleTransform ScaleX="1" ScaleY="1" />
+                                        </TransformGroup.Children>
+                                    </TransformGroup>
+                                </Path.RenderTransform>
+                            </Path>
+                        </Border>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="IconRadioButtonStyle" TargetType="RadioButton">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Foreground" Value="{ThemeResource SystemControlForegroundBaseHighBrush}"/>
+        <Setter Property="Padding" Value="8,6,0,0" />
+        <Setter Property="HorizontalAlignment" Value="Left" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="HorizontalContentAlignment" Value="Left" />
+        <Setter Property="VerticalContentAlignment" Value="Top" />
+        <Setter Property="FontFamily" Value="{ThemeResource ContentControlThemeFontFamily}" />
+        <Setter Property="FontSize" Value="{ThemeResource ControlContentThemeFontSize}" />
+        <Setter Property="MinWidth" Value="170" />
+        <Setter Property="Margin" Value="0,10,0,0" />
+        <Setter Property="GroupName" Value="MenuItem" />
+        <Setter Property="UseSystemFocusVisuals" Value="True" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="RadioButton">
+                    <Grid x:Name="RootGrid" Background="{StaticResource TransparentColor}">
+
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CommonStates">
+                                <VisualState x:Name="Normal">
+                                    <Storyboard>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Background" Storyboard.TargetName="RootGrid">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource TransparentColor}"/>
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="PathIcon">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource IconNormalColor}"/>
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <PointerUpThemeAnimation Storyboard.TargetName="RootGrid"/>
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="PointerOver">
+                                    <Storyboard>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Background" Storyboard.TargetName="RootGrid">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource TransparentColor}"/>
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="PathIcon">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource IconNormalColor}"/>
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="BorderBrush" Storyboard.TargetName="bd">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource IconPressedBackgroundColor}"/>
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Background" Storyboard.TargetName="GDmain">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource IconPressedBackgroundColor}"/>
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <PointerUpThemeAnimation Storyboard.TargetName="RootGrid"/>
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="Pressed">
+                                    <Storyboard>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Background" Storyboard.TargetName="RootGrid">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource TransparentColor}"/>
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="PathIcon">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource IconPressedColor}"/>
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Background" Storyboard.TargetName="bd">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource IconPressedBackgroundColor}"/>
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Background" Storyboard.TargetName="GDmain">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource IconPressedBackgroundColor}"/>
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <PointerDownThemeAnimation Storyboard.TargetName="RootGrid"/>
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="Disabled">
+                                    <Storyboard>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Background" Storyboard.TargetName="RootGrid">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ToggleButtonBackgroundDisabled}"/>
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="PathIcon">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource TransparentColor}"/>
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <!--<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="BorderBrush" Storyboard.TargetName="ContentPresenter">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ToggleButtonBorderBrushDisabled}"/>
+                                            </ObjectAnimationUsingKeyFrames>-->
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="Checked">
+                                    <Storyboard>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Background" Storyboard.TargetName="RootGrid">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource TransparentColor}"/>
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <!--<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Data" Storyboard.TargetName="PathIcon">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="M17.94,0L29.150001,0 29.150001,32 17.94,32z M0,0L11.210002,0 11.210002,32 0,32z"/>
+                                            </ObjectAnimationUsingKeyFrames>-->
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="PathIcon">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource IconPressedColor}"/>
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Stroke" Storyboard.TargetName="PathIcon">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource TransparentColor}"/>
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Background" Storyboard.TargetName="bd">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource IconPressedBackgroundColor}"/>
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Background" Storyboard.TargetName="GDmain">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource IconPressedBackgroundColor}"/>
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <PointerUpThemeAnimation Storyboard.TargetName="RootGrid"/>
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="CheckedPointerOver">
+                                    <Storyboard>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Background" Storyboard.TargetName="RootGrid">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource TransparentColor}"/>
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <!--<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Data" Storyboard.TargetName="PathIcon">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="M17.94,0L29.150001,0 29.150001,32 17.94,32z M0,0L11.210002,0 11.210002,32 0,32z"/>
+                                            </ObjectAnimationUsingKeyFrames>-->
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="PathIcon">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource IconPressedColor}"/>
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Stroke" Storyboard.TargetName="PathIcon">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource TransparentColor}"/>
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Background" Storyboard.TargetName="bd">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource IconPressedBackgroundColor}"/>
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Background" Storyboard.TargetName="GDmain">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource IconPressedBackgroundColor}"/>
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <PointerUpThemeAnimation Storyboard.TargetName="RootGrid"/>
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="CheckedPressed">
+                                    <Storyboard>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Background" Storyboard.TargetName="RootGrid">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource TransparentColor}"/>
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <!--<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Data" Storyboard.TargetName="PathIcon">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="M17.94,0L29.150001,0 29.150001,32 17.94,32z M0,0L11.210002,0 11.210002,32 0,32z"/>
+                                            </ObjectAnimationUsingKeyFrames>-->
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="PathIcon">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource IconPressedColor}"/>
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Stroke" Storyboard.TargetName="PathIcon">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource TransparentColor}"/>
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Background" Storyboard.TargetName="bd">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource IconPressedBackgroundColor}"/>
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Background" Storyboard.TargetName="GDmain">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource IconPressedBackgroundColor}"/>
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <PointerDownThemeAnimation Storyboard.TargetName="RootGrid"/>
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="CheckedDisabled">
+                                    <Storyboard>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Background" Storyboard.TargetName="RootGrid">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ToggleButtonBackgroundCheckedDisabled}"/>
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <!--<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Data" Storyboard.TargetName="PathIcon">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="M17.94,0L29.150001,0 29.150001,32 17.94,32z M0,0L11.210002,0 11.210002,32 0,32z"/>
+                                            </ObjectAnimationUsingKeyFrames>-->
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="PathIcon">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource IconPressedColor}"/>
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Stroke" Storyboard.TargetName="PathIcon">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource TransparentColor}"/>
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Background" Storyboard.TargetName="bd">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource IconPressedBackgroundColor}"/>
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Background" Storyboard.TargetName="GDmain">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource IconPressedBackgroundColor}"/>
+                                        </ObjectAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="Indeterminate">
+                                    <Storyboard>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Background" Storyboard.TargetName="RootGrid">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ToggleButtonBackgroundIndeterminate}"/>
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="PathIcon">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ToggleButtonForegroundIndeterminate}"/>
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <!--<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="BorderBrush" Storyboard.TargetName="ContentPresenter">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ToggleButtonBorderBrushIndeterminate}"/>
+                                            </ObjectAnimationUsingKeyFrames>-->
+                                        <PointerUpThemeAnimation Storyboard.TargetName="RootGrid"/>
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="IndeterminatePointerOver">
+                                    <Storyboard>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Background" Storyboard.TargetName="RootGrid">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ToggleButtonBackgroundIndeterminatePointerOver}"/>
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="PathIcon">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ToggleButtonBorderBrushIndeterminatePointerOver}"/>
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <!--<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Foreground" Storyboard.TargetName="ContentPresenter">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ToggleButtonForegroundIndeterminatePointerOver}"/>
+                                            </ObjectAnimationUsingKeyFrames>-->
+                                        <PointerUpThemeAnimation Storyboard.TargetName="RootGrid"/>
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="IndeterminatePressed">
+                                    <Storyboard>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Background" Storyboard.TargetName="RootGrid">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ToggleButtonBackgroundIndeterminatePressed}"/>
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="PathIcon">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ToggleButtonBorderBrushIndeterminatePressed}"/>
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <!--<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Foreground" Storyboard.TargetName="ContentPresenter">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ToggleButtonForegroundIndeterminatePressed}"/>
+                                            </ObjectAnimationUsingKeyFrames>-->
+                                        <PointerDownThemeAnimation Storyboard.TargetName="RootGrid"/>
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="IndeterminateDisabled">
+                                    <Storyboard>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Background" Storyboard.TargetName="RootGrid">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ToggleButtonBackgroundIndeterminateDisabled}"/>
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Fill" Storyboard.TargetName="PathIcon">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ToggleButtonForegroundIndeterminateDisabled}"/>
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <!--<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="BorderBrush" Storyboard.TargetName="ContentPresenter">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ToggleButtonBorderBrushIndeterminateDisabled}"/>
+                                            </ObjectAnimationUsingKeyFrames>-->
+                                    </Storyboard>
+                                </VisualState>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                        <Grid x:Name="GDmain">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="50"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Border x:Name="bd" Margin="2" BorderThickness="1">
+                                <Path x:Name="PathIcon"
+                          Data="{TemplateBinding AttachedProperties:AdditionalAttachedProperties.PathData}"
+                          Stretch="Uniform"
+                          Fill="{StaticResource WhiteColor}"
+                          Stroke="{StaticResource TransparentColor}"
+                          StrokeThickness="1"
+                          Height="20" 
+                          Width="20"
+                          Margin="4"
+                          RenderTransformOrigin="0.5,0.5">
+                                    <Path.RenderTransform>
+                                        <TransformGroup>
+                                            <TransformGroup.Children>
+                                                <RotateTransform Angle="0" />
+                                                <ScaleTransform ScaleX="1" ScaleY="1" />
+                                            </TransformGroup.Children>
+                                        </TransformGroup>
+                                    </Path.RenderTransform>
+                                </Path>
+                            </Border>
+
+                            <TextBlock x:Name="tbContent" Text="{TemplateBinding Content}" Grid.Column="1"  FontSize="16"
+                                       VerticalAlignment="Center"
+                                       Foreground="{StaticResource IconPressedColor}" />
+                        </Grid>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="ArrowButtonStyle"
+           TargetType="Button">
+        <Setter Property="HorizontalAlignment"
+                Value="Stretch" />
+        <Setter Property="VerticalAlignment"
+                Value="Stretch" />
+        <Setter Property="Height"
+                Value="40" />
+        <Setter Property="Width"
+                Value="60" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Grid x:Name="gd">
+
+                        <Border x:Name="border"
+                                Margin="2.5"
+                                Height="30"
+                                Width="50">
+                            <Image x:Name="image"
+                                   Source="{TemplateBinding AttachedProperties:AdditionalAttachedProperties.GeometryData}"
+                                   Stretch="Fill" />
+                        </Border>
+
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CommonStates">
+                                <VisualState x:Name="Normal" />
+                                <VisualState x:Name="PointerOver" />
+                                <VisualState x:Name="Pressed">
+                                    <Storyboard>
+                                        <ObjectAnimationUsingKeyFrames  Storyboard.TargetProperty="Height"
+                                                                        Storyboard.TargetName="border">
+                                            <DiscreteObjectKeyFrame  KeyTime="0"
+                                                                     Value="35" />
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <ObjectAnimationUsingKeyFrames  Storyboard.TargetProperty="Width"
+                                                                        Storyboard.TargetName="border">
+                                            <DiscreteObjectKeyFrame  KeyTime="0"
+                                                                     Value="55" />
+                                        </ObjectAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="Disabled" />
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+
+    </Style>
+
+    <Style x:Key="CloseButtonStyle"
+           TargetType="Button">
+        <Setter Property="HorizontalAlignment"
+                Value="Stretch" />
+        <Setter Property="VerticalAlignment"
+                Value="Stretch" />
+        <Setter Property="Height"
+                Value="40" />
+        <Setter Property="Width"
+                Value="40" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Grid x:Name="gd">
+
+                        <Border x:Name="border"
+                                Margin="0"
+                                Height="40"
+                                Width="40" Background="{StaticResource CloseTextButtonBackgroundColor}">
+                            <!--<Image x:Name="image"
+                                   Source="{TemplateBinding AttachedProperties:AdditionalAttachedProperties.GeometryData}"
+                                   Stretch="Fill" Height="25" Width="25"/>-->
+                            <Path x:Name="PathIcon"
+                          Data="{TemplateBinding Content}"
+                          Stretch="Uniform"
+                          Fill="{StaticResource WhiteColor}"
+                          Stroke="{StaticResource TransparentColor}"
+                          StrokeThickness="1"
+                          Height="15" 
+                          Width="15"
+                          Margin="4"
+                          RenderTransformOrigin="0.5,0.5">
+                                <Path.RenderTransform>
+                                    <TransformGroup>
+                                        <TransformGroup.Children>
+                                            <RotateTransform Angle="0" />
+                                            <ScaleTransform ScaleX="1" ScaleY="1" />
+                                        </TransformGroup.Children>
+                                    </TransformGroup>
+                                </Path.RenderTransform>
+                            </Path>
+                        </Border>
+
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CommonStates">
+                                <VisualState x:Name="Normal" />
+                                <VisualState x:Name="PointerOver" />
+                                <VisualState x:Name="Pressed">
+                                    <Storyboard>
+                                        <ObjectAnimationUsingKeyFrames  Storyboard.TargetProperty="Height"
+                                                                        Storyboard.TargetName="PathIcon">
+                                            <DiscreteObjectKeyFrame  KeyTime="0"
+                                                                     Value="25" />
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <ObjectAnimationUsingKeyFrames  Storyboard.TargetProperty="Width"
+                                                                        Storyboard.TargetName="PathIcon">
+                                            <DiscreteObjectKeyFrame  KeyTime="0"
+                                                                     Value="25" />
+                                        </ObjectAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="Disabled" />
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+
+    </Style>
+
+    <converter:CallStatusEnumToBackgroundColor x:Key="CallStatusBackgroundConverter"/>
+
+    <converter:DataToVisibilityConverter x:Key="TextVisibilityConverter" />
+    <converter:AstericSignVisibility x:Key="AstericSignVisibilityConverter"/>
+    <converter:CloseBoxVisibilityConverter x:Key="CloseBoxVisibility" />
+
+    <Style x:Key="BoxTicketButtonStyle"
+           TargetType="Button">
+        <Setter Property="HorizontalAlignment"
+                Value="Stretch" />
+        <Setter Property="VerticalAlignment"
+                Value="Stretch" />
+        <Setter Property="Height"
+                Value="150" />
+        <Setter Property="Width"
+                Value="150" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+
+                    <Grid Height="150"
+                          Width="150"
+                          Margin="0">
+                        <Border x:Name="bd"
+                                Height="145"
+                                Width="145 "
+                                BorderThickness="2">
+                            <Border  CornerRadius="5"
+                                     Margin="7"
+                                     Background="{Binding Status, Converter={StaticResource CallStatusBackgroundConverter}}">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="30" />
+                                        <RowDefinition Height="65" />
+                                        <RowDefinition Height="30" />
+                                    </Grid.RowDefinitions>
+
+                                    <!---->
+                                    
+                                    <StackPanel Orientation="Horizontal"
+                                    Margin="5,0,0,0">
+                                        <TextBlock Text="$"
+                                       Foreground="{StaticResource WhiteColor}"
+                                       FontSize="14"
+                                       FontWeight="SemiBold" />
+                                        
+                                        <TextBlock Text="{Binding Price,Mode=TwoWay}"
+                                       Foreground="{StaticResource WhiteColor}"
+                                       FontSize="14"
+                                       FontWeight="SemiBold" />
+                                    </StackPanel>
+
+                                    <StackPanel Orientation="Horizontal"
+                                                Margin="0,0,5,0"
+                                                HorizontalAlignment="Right">
+                                        <TextBlock Text="$"
+                                                   Foreground="{StaticResource WhiteColor}"
+                                                   FontSize="14"
+                                                   Visibility="{Binding Status, Converter={StaticResource CloseBoxVisibility}}" 
+                                                   FontWeight="SemiBold" />
+                                        
+                                        <TextBlock Text="{Binding Total_Price,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                                                   Foreground="{StaticResource WhiteColor}"
+                                                   Visibility="{Binding Status, Converter={StaticResource CloseBoxVisibility}}" 
+                                                   FontSize="14"
+                                                   FontWeight="SemiBold" />
+                                    </StackPanel>
+
+                                    <TextBlock Text="{Binding Box_No,Mode=TwoWay}"
+                                   Grid.Row="1"
+                                   Foreground="{StaticResource WhiteColor}"
+                                   FontSize="50"
+                                   FontWeight="Bold"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center" /> 
+                                    <TextBlock
+                                        Text="{Binding SelectedIndexBoxno.Box_No,Mode=TwoWay}"
+                                   Grid.Row="1"
+                                   Foreground="{StaticResource WhiteColor}"
+                                   FontSize="50"
+                                   FontWeight="Bold"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center" />
+                                    <StackPanel Orientation="Horizontal"
+                                    Grid.Row="2"
+                                    Margin="5,0,0,0">
+                                        
+                                        <TextBlock Text="o"
+                                       Foreground="{StaticResource WhiteColor}"
+                                       FontSize="14"
+                                       FontWeight="SemiBold" />
+                                        
+                                        <TextBlock Text=":"
+                                       Foreground="{StaticResource WhiteColor}"
+                                       FontSize="14"
+                                       FontWeight="SemiBold" />
+                                        
+                                        <TextBlock Text="{Binding Start_No,Mode=TwoWay}"
+                                       Foreground="{StaticResource WhiteColor}"
+                                       FontSize="14"
+                                       FontWeight="SemiBold" />
+
+                                        <!--<TextBlock Text="**"
+                                                   Foreground="{StaticResource WhiteColor}"
+                                                   FontSize="14"
+                                                   FontWeight="SemiBold"
+                                                   HorizontalAlignment="Right" 
+                                                   VerticalAlignment="Center" 
+                                                   Visibility="{Binding Status,Converter={StaticResource AstericSignVisibilityConverter}}"
+                                                   Margin="0,0,0,5" />-->
+                                    </StackPanel>
+
+                                    <StackPanel Orientation="Horizontal"
+                                                Grid.Row="2"
+                                                HorizontalAlignment="Right"
+                                                Margin="0,0,5,0">
+
+                                        <TextBlock Text="S"
+                                                   Visibility="{Binding Settle_Status, Converter={StaticResource TextVisibilityConverter}}"
+                                                   Foreground="{StaticResource WhiteColor}"
+                                                   FontSize="14"
+                                                   FontWeight="SemiBold" />
+
+                                        <TextBlock Text="c"
+                                                   Visibility="{Binding Status, Converter={StaticResource CloseBoxVisibility}}"
+                                                   Foreground="{StaticResource WhiteColor}"
+                                                   FontSize="14"
+                                                   FontWeight="SemiBold" />
+
+                                        <TextBlock Text=":"
+                                                   Visibility="{Binding Status, Converter={StaticResource CloseBoxVisibility}}"
+                                                   Foreground="{StaticResource WhiteColor}"
+                                                   FontSize="14"
+                                                   FontWeight="SemiBold" />
+
+                                        <TextBlock Text="{Binding Stopped_At,Mode=TwoWay}"
+                                                   Visibility="{Binding Status, Converter={StaticResource CloseBoxVisibility}}"
+                                                   Foreground="{StaticResource WhiteColor}"
+                                                   FontSize="14"
+                                                   FontWeight="SemiBold" />
+
+                                    </StackPanel>
+
+
+
+                                </Grid>
+                            </Border>
+                        </Border>
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CommonStates">
+                                <VisualState x:Name="Normal" />
+
+                                <VisualState x:Name="PointerOver">
+                                    <Storyboard>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="BorderBrush"
+                                                                       Storyboard.TargetName="bd">
+                                            <DiscreteObjectKeyFrame KeyTime="0"
+                                                                    Value="Gray" />
+                                        </ObjectAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+
+                                <VisualState x:Name="Pressed">
+                                    <Storyboard>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="BorderBrush"
+                                                                       Storyboard.TargetName="bd">
+                                            <DiscreteObjectKeyFrame KeyTime="0"
+                                                                    Value="{StaticResource ButtonBackgroundLightOrange}" />
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Height"
+                                                                       Storyboard.TargetName="bd">
+                                            <DiscreteObjectKeyFrame KeyTime="0"
+                                                                    Value="140" />
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Width"
+                                                                       Storyboard.TargetName="bd">
+                                            <DiscreteObjectKeyFrame KeyTime="0"
+                                                                    Value="140" />
+                                        </ObjectAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+
+                                <VisualState x:Name="Selected">
+                                    <Storyboard>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="BorderBrush"
+                                                                       Storyboard.TargetName="bd">
+                                            <DiscreteObjectKeyFrame KeyTime="0"
+                                                                    Value="{StaticResource TextButtonPressedBackgroundColor}" />
+                                        </ObjectAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+
+                                <VisualState x:Name="Disabled" />
+
+                                <VisualState x:Name="Checked" />
+
+                                <VisualState x:Name="CheckedPointerOver" />
+
+                                <VisualState x:Name="CheckedPressed" />
+
+                                <VisualState x:Name="CheckedDisabled" />
+
+                                <VisualState x:Name="Indeterminate" />
+
+                                <VisualState x:Name="IndeterminatePointerOver" />
+
+                                <VisualState x:Name="IndeterminatePressed" />
+
+                                <VisualState x:Name="IndeterminateDisabled" />
+
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+
+    </Style>
+    <Style x:Key="NewStoreButtonStyle"
+           TargetType="Button">
+        <Setter Property="HorizontalAlignment"
+                Value="Stretch" />
+        <Setter Property="VerticalAlignment"
+                Value="Stretch" />
+        <Setter Property="Height"
+                Value="150" />
+        <Setter Property="Width"
+                Value="150" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+
+                    <Grid Height="150"
+                          Width="150"
+                          Margin="0">
+                        <Border x:Name="bd"
+                                Height="145"
+                                Width="145 "
+                                BorderThickness="2">
+                            <Border  CornerRadius="5"
+                                     Margin="7"
+                                     Background="{Binding SelectedIndexBoxno.Status, Converter={StaticResource CallStatusBackgroundConverter}}">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="30" />
+                                        <RowDefinition Height="65" />
+                                        <RowDefinition Height="30" />
+                                    </Grid.RowDefinitions>
+
+                                    
+                                    
+                                    <StackPanel Orientation="Horizontal"
+                                    Margin="5,0,0,0">
+                                        <TextBlock Text="$"
+                                       Foreground="{StaticResource WhiteColor}"
+                                       FontSize="14"
+                                       FontWeight="SemiBold" />
+
+                                        <TextBlock Text="{Binding SelectedIndexBoxno.Price,Mode=TwoWay}"
+                                       Foreground="{StaticResource WhiteColor}"
+                                       FontSize="14"
+                                       FontWeight="SemiBold" />
+                                    </StackPanel>
+
+                                    <StackPanel Orientation="Horizontal"
+                                                Margin="0,0,5,0"
+                                                HorizontalAlignment="Right">
+                                        <TextBlock Text="$"
+                                                   Foreground="{StaticResource WhiteColor}"
+                                                   FontSize="14"
+                                                   Visibility="{Binding SelectedIndexBoxno.Status, Converter={StaticResource CloseBoxVisibility}}" 
+                                                   FontWeight="SemiBold" />
+                                        
+                                        <TextBlock Text="{Binding Total_Price,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                                                   Foreground="{StaticResource WhiteColor}"
+                                                   Visibility="{Binding SelectedIndexBoxno.Status, Converter={StaticResource CloseBoxVisibility}}" 
+                                                   FontSize="14"
+                                                   FontWeight="SemiBold" />
+                                    </StackPanel>
+
+                                    <TextBlock Text="{Binding SelectedIndexBoxno.Box_No,Mode=TwoWay}"
+                                   Grid.Row="1"
+                                   Foreground="{StaticResource WhiteColor}"
+                                   FontSize="50"
+                                   FontWeight="Bold"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center" />                                   
+                                    <StackPanel Orientation="Horizontal"
+                                    Grid.Row="2"
+                                    Margin="5,0,0,0">
+                                        
+                                        <TextBlock Text="o"
+                                       Foreground="{StaticResource WhiteColor}"
+                                       FontSize="14"
+                                       FontWeight="SemiBold" />
+                                        
+                                        <TextBlock Text=":"
+                                       Foreground="{StaticResource WhiteColor}"
+                                       FontSize="14"
+                                       FontWeight="SemiBold" />
+
+                                        <TextBlock Text="{Binding SelectedIndexBoxno.Start_No,Mode=TwoWay}"
+                                                   Foreground="{StaticResource WhiteColor}"
+                                                   FontSize="14"
+                                                   FontWeight="SemiBold" />
+
+                                    </StackPanel>
+
+                                    <StackPanel Orientation="Horizontal"
+                                                Grid.Row="2"
+                                                HorizontalAlignment="Right"
+                                                Margin="0,0,5,0">
+
+                                        <TextBlock Text="S"
+                                                   Visibility="{Binding SelectedIndexBoxno.Settle_Status, Converter={StaticResource TextVisibilityConverter}}"
+                                                   Foreground="{StaticResource WhiteColor}"
+                                                   FontSize="14"
+                                                   FontWeight="SemiBold" />
+
+                                        <TextBlock Text="c"
+                                                   Visibility="{Binding SelectedIndexBoxno.Status, Converter={StaticResource CloseBoxVisibility}}"
+                                                   Foreground="{StaticResource WhiteColor}"
+                                                   FontSize="14"
+                                                   FontWeight="SemiBold" />
+
+                                        <TextBlock Text=":"
+                                                   Visibility="{Binding SelectedIndexBoxno.Status, Converter={StaticResource CloseBoxVisibility}}"
+                                                   Foreground="{StaticResource WhiteColor}"
+                                                   FontSize="14"
+                                                   FontWeight="SemiBold" />
+
+                                        <TextBlock Text="{Binding SelectedIndexBoxno.Stopped_At,Mode=TwoWay}"
+                                                   Visibility="{Binding SelectedIndexBoxno.Status, Converter={StaticResource CloseBoxVisibility}}"
+                                                   Foreground="{StaticResource WhiteColor}"
+                                                   FontSize="14"
+                                                   FontWeight="SemiBold" />
+
+                                    </StackPanel>
+
+
+
+                                </Grid>
+                            </Border>
+                        </Border>
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CommonStates">
+                                <VisualState x:Name="Normal" />
+
+                                <VisualState x:Name="PointerOver">
+                                    <Storyboard>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="BorderBrush"
+                                                                       Storyboard.TargetName="bd">
+                                            <DiscreteObjectKeyFrame KeyTime="0"
+                                                                    Value="Gray" />
+                                        </ObjectAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+
+                                <VisualState x:Name="Pressed">
+                                    <Storyboard>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="BorderBrush"
+                                                                       Storyboard.TargetName="bd">
+                                            <DiscreteObjectKeyFrame KeyTime="0"
+                                                                    Value="{StaticResource ButtonBackgroundLightOrange}" />
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Height"
+                                                                       Storyboard.TargetName="bd">
+                                            <DiscreteObjectKeyFrame KeyTime="0"
+                                                                    Value="140" />
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Width"
+                                                                       Storyboard.TargetName="bd">
+                                            <DiscreteObjectKeyFrame KeyTime="0"
+                                                                    Value="140" />
+                                        </ObjectAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+
+                                <VisualState x:Name="Selected">
+                                    <Storyboard>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="BorderBrush"
+                                                                       Storyboard.TargetName="bd">
+                                            <DiscreteObjectKeyFrame KeyTime="0"
+                                                                    Value="{StaticResource TextButtonPressedBackgroundColor}" />
+                                        </ObjectAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+
+                                <VisualState x:Name="Disabled" />
+
+                                <VisualState x:Name="Checked" />
+
+                                <VisualState x:Name="CheckedPointerOver" />
+
+                                <VisualState x:Name="CheckedPressed" />
+
+                                <VisualState x:Name="CheckedDisabled" />
+
+                                <VisualState x:Name="Indeterminate" />
+
+                                <VisualState x:Name="IndeterminatePointerOver" />
+
+                                <VisualState x:Name="IndeterminatePressed" />
+
+                                <VisualState x:Name="IndeterminateDisabled" />
+
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+
+    </Style>
+
+    <Style x:Key="StoreSettingsButtonStyle"
+           TargetType="Button">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Grid>
+                        <Border x:Name="StoreSettingBd"
+                                BorderThickness="1"
+                                Background="{TemplateBinding Background}"
+                                CornerRadius="7"
+                                Height="130"
+                                Width="130">
+                            <TextBlock HorizontalAlignment="Center"
+                                       VerticalAlignment="Center"
+                                       TextWrapping="Wrap"
+                                       FontSize="18"
+                                       FontWeight="SemiBold"
+                                       Foreground="White"
+                                       Text="{TemplateBinding Content}" />
+                        </Border>
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CommonStates">
+                                <VisualState x:Name="Normal" />
+
+                                <VisualState x:Name="PointerOver">
+                                    <Storyboard>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="BorderBrush"
+                                                                       Storyboard.TargetName="StoreSettingBd">
+                                            <DiscreteObjectKeyFrame KeyTime="0"
+                                                                    Value="Black" />
+                                        </ObjectAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+
+                                <VisualState x:Name="Pressed">
+                                    <Storyboard>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="BorderBrush"
+                                                                       Storyboard.TargetName="StoreSettingBd">
+                                            <DiscreteObjectKeyFrame KeyTime="0"
+                                                                    Value="Gray" />
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Height"
+                                                                       Storyboard.TargetName="StoreSettingBd">
+                                            <DiscreteObjectKeyFrame KeyTime="0"
+                                                                    Value="135" />
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Width"
+                                                                       Storyboard.TargetName="StoreSettingBd">
+                                            <DiscreteObjectKeyFrame KeyTime="0"
+                                                                    Value="135" />
+                                        </ObjectAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+
+                                <VisualState x:Name="Selected">
+                                    <Storyboard>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="BorderBrush"
+                                                                       Storyboard.TargetName="bd">
+                                            <DiscreteObjectKeyFrame KeyTime="0"
+                                                                    Value="{StaticResource TextButtonPressedBackgroundColor}" />
+                                        </ObjectAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+
+                                <VisualState x:Name="Disabled" />
+
+                                <VisualState x:Name="Checked" />
+
+                                <VisualState x:Name="CheckedPointerOver" />
+
+                                <VisualState x:Name="CheckedPressed" />
+
+                                <VisualState x:Name="CheckedDisabled" />
+
+                                <VisualState x:Name="Indeterminate" />
+
+                                <VisualState x:Name="IndeterminatePointerOver" />
+
+                                <VisualState x:Name="IndeterminatePressed" />
+
+                                <VisualState x:Name="IndeterminateDisabled" />
+
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+
+    </Style>
+
+
+    <Style x:Key="TextButtonStyle" TargetType="Button">
+        <Setter Property="HorizontalAlignment" Value="Stretch"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="Height" Value="40"/>
+        <Setter Property="Width" Value="100"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Grid x:Name="gd" Background="Transparent">
+
+                        <Border x:Name="border"
+                                BorderThickness="1"
+                                Margin="0" Height="40" Width="Auto" 
+                                Background="{StaticResource TextButtonBackgroundColor}">
+                            <TextBlock x:Name="tbContent" Text="{TemplateBinding Content}" Foreground="#FF3E3E3E" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="SemiBold"/>
+                            <!--<Image x:Name="image" Height="35" Width="35" Source="{TemplateBinding AttachedProperties:AdditionalAttachedProperties.GeometryData}" Stretch="Fill"/>-->
+                        </Border>
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CommonStates">
+                                <VisualState x:Name="Normal"/>
+                                <VisualState x:Name="PointerOver">
+                                    <Storyboard>
+                                        <ObjectAnimationUsingKeyFrames  Storyboard.TargetProperty="BorderBrush" Storyboard.TargetName="border">
+                                            <DiscreteObjectKeyFrame  KeyTime="0" Value="{StaticResource TextButtonPressedBackgroundColor}"/>
+                                        </ObjectAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="Pressed">
+                                    <Storyboard>
+                                        <ObjectAnimationUsingKeyFrames  Storyboard.TargetProperty="Background" Storyboard.TargetName="border">
+                                            <DiscreteObjectKeyFrame  KeyTime="0" Value="{StaticResource TextButtonPressedBackgroundColor}"/>
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <ObjectAnimationUsingKeyFrames  Storyboard.TargetProperty="Foreground" Storyboard.TargetName="tbContent">
+                                            <DiscreteObjectKeyFrame  KeyTime="0" Value="{StaticResource WhiteColor}"/>
+                                        </ObjectAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="Disabled"/>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+
+    </Style>
+
+    <Style x:Key="EmptyBoxTicketButtonStyle"
+           TargetType="Button">
+        <Setter Property="HorizontalAlignment"
+                Value="Stretch" />
+        <Setter Property="VerticalAlignment"
+                Value="Stretch" />
+        <Setter Property="Height"
+                Value="70" />
+        <Setter Property="Width"
+                Value="70" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+
+                    <Grid Height="70"
+                  Width="70"
+                  Margin="0">
+                        <Border x:Name="bd" Height="65" Width="65" BorderThickness="2">
+                            <Border x:Name="border"
+                                    Height="60"
+                                    Width="60"
+                                    CornerRadius="5"
+                                    Background="{StaticResource EmptyBoxBackgroundColor}">
+                                <TextBlock Text="{Binding Box_No}"
+                               FontSize="30"
+                               Foreground="White"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                               TextAlignment="Center"
+                               FontWeight="Bold" />
+                            </Border>
+                        </Border>
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CommonStates">
+                                <VisualState x:Name="Normal"/>
+
+                                <VisualState x:Name="PointerOver">
+                                    <Storyboard>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="BorderBrush" Storyboard.TargetName="bd">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="Gray"/>
+                                        </ObjectAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+
+                                <VisualState x:Name="Pressed">
+                                    <Storyboard>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="BorderBrush" Storyboard.TargetName="bd">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource ButtonBackgroundLightOrange}"/>
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Height" Storyboard.TargetName="bd">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="60"/>
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Width" Storyboard.TargetName="bd">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="60"/>
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Height" Storyboard.TargetName="border">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="55"/>
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Width" Storyboard.TargetName="border">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="55"/>
+                                        </ObjectAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+
+                                <VisualState x:Name="Selected">
+                                    <Storyboard>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="BorderBrush" Storyboard.TargetName="bd">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource TextButtonPressedBackgroundColor}"/>
+                                        </ObjectAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                                
+                                <VisualState x:Name="Disabled"/>
+
+                                <VisualState x:Name="Checked"/>
+
+                                <VisualState x:Name="CheckedPointerOver"/>
+
+                                <VisualState x:Name="CheckedPressed"/>
+
+                                <VisualState x:Name="CheckedDisabled"/>
+
+                                <VisualState x:Name="Indeterminate"/>
+
+                                <VisualState x:Name="IndeterminatePointerOver"/>
+
+                                <VisualState x:Name="IndeterminatePressed"/>
+
+                                <VisualState x:Name="IndeterminateDisabled"/>
+
+                            </VisualStateGroup>
+                            
+                        </VisualStateManager.VisualStateGroups>
+                    </Grid>
+                    
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+
+    </Style>
+
+    <Style x:Key="btnActivateStyleResource"
+           TargetType="Button">
+        <Setter Property="HorizontalAlignment"
+                Value="Stretch" />
+        <Setter Property="VerticalAlignment"
+                Value="Stretch" />
+        <Setter Property="Height"
+                Value="40" />
+        <Setter Property="Width"
+                Value="40" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Grid x:Name="grid" Background="#FFB5E51D">
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CommonStates">
+                                <VisualState x:Name="Normal"/>
+                                <VisualState x:Name="Pressed">
+                                    <Storyboard>
+                                        <DoubleAnimation Duration="0" To="0.8" Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="grid" />
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="Disabled"/>
+                                <VisualState x:Name="PointerOver"/>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                        <TextBlock x:Name="textBlock" HorizontalAlignment="Center" TextWrapping="Wrap" Text="{TemplateBinding Content}" VerticalAlignment="Center" Foreground="White" FontWeight="Bold"/>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+
+    </Style>
+
+</ResourceDictionary>
